@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Credit to ThePrimeagen
+
+# if argument passed to t-script, that becomes the selected item by default
+if [[ $# -eq 1 ]]; then
+    selected=$1
+# otherwise build up a list of items within the Code directory
+# pipe items into fzf (fuzzy finder)
+else
+    items=`find ~/Code -maxdepth 2 -mindepth 1 -type d`
+    items+=`echo -e "\n/tmp"`
+    selected=`echo "$items" | fzf`
+fi
+
+# get the basename of the item and replace any dots with underscore
+dirname=`basename $selected | sed 's/\./_/g'`
+
+# if session already exists then use that session
+tmux switch-client -t =$dirname
+if [[ $? -eq 0 ]]; then
+    exit 0
+fi
+
+# otherwise create a new sesssion with the name and directory we want, then switch to it
+tmux new-session -c $selected -d -s $dirname && tmux switch-client -t $dirname || tmux new -c $selected -A -s $dirname
+#

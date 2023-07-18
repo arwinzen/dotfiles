@@ -23,7 +23,7 @@ require('lualine').setup({
       'diff',
       separator,
       -- shows how many lsp clients are active for the buffer
-      '"🖧  " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
+      '"󰌘 " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
       { 'diagnostics', sources = { 'nvim_diagnostic' } },
       separator,
     },

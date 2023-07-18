@@ -149,12 +149,6 @@ use({
   end,
 })
 
--- Automatically set up your configuration after cloning packer.nvim
--- Put this at the end after all plugins
-if packer_bootstrap then
-    require('packer').sync()
-end
-
 use({
   'nvim-telescope/telescope.nvim',
   requires = {
@@ -208,34 +202,74 @@ use({
 })
 
 -- Add a dashboard.
-use {
+use ({
   'glepnir/dashboard-nvim',
   event = 'VimEnter',
   config = function()
     require('rw1n/plugins/dashboard-nvim')
   end,
   requires = {'nvim-tree/nvim-web-devicons'}
-}
+})
 
+-- Git integration
 use({
   'lewis6991/gitsigns.nvim',
-  requires = 'nvim-lua/plenary.nvim',
   config = function()
-    require('gitsigns').setup({
-      sign_priority = 20,
-      on_attach = function(bufnr)
-        vim.keymap.set('n', ']h', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true, buffer = bufnr })
-        vim.keymap.set('n', '[h', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true, buffer = bufnr })
-      end,
-    })
+    require('gitsigns').setup()
+    vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
+    vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>')
+    vim.keymap.set('n', 'gp', ':Gitsigns preview_hunk<CR>')
+    vim.keymap.set('n', 'gb', ':Gitsigns blame_line<CR>')
   end,
 })
 
+-- Git commands.
 use({
   'tpope/vim-fugitive',
   requires = 'tpope/vim-rhubarb',
   cmd = 'G',
 })
+
+use({
+  'voldikss/vim-floaterm',
+  config = function()
+    require('rw1n.plugins.floaterm')
+  end,
+})
+
+-- Improved syntax highlighting
+use({
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      require('nvim-treesitter.install').update({ with_sync = true })
+    end,
+    -- provides the context to grab the correct comment character
+    requires = {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    config = function()
+      require('rw1n.plugins.treesitter')
+    end,
+})
+
+-- Language Server Protocol
+use({
+  'neovim/nvim-lspconfig',
+  requires = {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+  },
+  config = function()
+    require('rw1n/plugins/lspconfig')
+  end,
+})
+
+-- Automatically set up your configuration after cloning packer.nvim
+-- Put this at the end after all plugins
+if packer_bootstrap then
+    require('packer').sync()
+end
 
 vim.cmd([[
   augroup packer_user_config

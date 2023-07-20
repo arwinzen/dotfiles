@@ -4,14 +4,19 @@ local lspconfig = require('lspconfig')
 require('mason').setup()
 require('mason-lspconfig').setup({ automatic_installation = true })
 
+-- nvim reports a set of capabilities to the language server to tell the ls what nvim understands
+-- this line adds some extra capabilities from the completion engine
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- PHP
-lspconfig.intelephense.setup({})
+lspconfig.intelephense.setup({ capabilities = capabilities })
 
 -- Tailwind CSS
-lspconfig.tailwindcss.setup({})
+lspconfig.tailwindcss.setup({ capabilities = capabilities })
 
 -- Go
 lspconfig.gopls.setup({
+  capabilities = capabilities,
   settings = {
     gopls = {
       gofumpt = true,
@@ -20,6 +25,16 @@ lspconfig.gopls.setup({
   flags = { 
     debounce_text_changes = 150,
   },
+})
+
+-- JSON
+lspconfig.jsonls.setup({
+    capabilities = capabilities,
+    settings = {
+      json = {
+        schemas = require('schemastore').json.schemas(),
+      },
+    },
 })
 
 -- Keymaps

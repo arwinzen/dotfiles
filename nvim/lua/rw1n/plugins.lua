@@ -166,13 +166,13 @@ use({
 })
 
 -- File tree sidebar
-use({
-  'kyazdani42/nvim-tree.lua',
-  requires = 'kyazdani42/nvim-web-devicons',
-  config = function()
-    require('rw1n/plugins/nvim-tree')
-  end,
-})
+-- use({
+--   'kyazdani42/nvim-tree.lua',
+--   requires = 'kyazdani42/nvim-web-devicons',
+--   config = function()
+--     require('rw1n/plugins/nvim-tree')
+--   end,
+-- })
 
 -- Custom status line
 use({
@@ -183,15 +183,15 @@ use({
     end,
 })
 
-use({
-  'akinsho/bufferline.nvim',
-  requires = 'kyazdani42/nvim-web-devicons',
-  -- tells nvim to load this plugin after the theme has been loaded
-  after = 'onedark.nvim',
-  config = function()
-    require('rw1n.plugins.bufferline')
-  end,
-})
+-- use({
+--   'akinsho/bufferline.nvim',
+--   requires = 'kyazdani42/nvim-web-devicons',
+--   -- tells nvim to load this plugin after the theme has been loaded
+--   after = 'onedark.nvim',
+--   config = function()
+--     require('rw1n.plugins.bufferline')
+--   end,
+-- })
 
 -- Display indentation lines.
 use({
@@ -253,15 +253,41 @@ use({
     end,
 })
 
+-- Quickly change between frequent files (Primagen)
+-- use('theprimagen/harpoon')
+
+-- persistent undos with the ability to see history of undo tree
+-- use('mbbill/undotree')
+
 -- Language Server Protocol
 use({
   'neovim/nvim-lspconfig',
   requires = {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
+    'b0o/schemastore.nvim',
   },
   config = function()
     require('rw1n/plugins/lspconfig')
+  end,
+})
+
+-- Completion
+use({
+  'hrsh7th/nvim-cmp',
+  requires = {
+    'L3MON4D3/LuaSnip',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
+    'hrsh7th/cmp-nvim-lua',
+    'jessarcher/cmp-path',
+    'onsails/lspkind-nvim',
+    'saadparwaiz1/cmp_luasnip',
+  },
+  config = function()
+    require('rw1n.plugins.cmp')
   end,
 })
 

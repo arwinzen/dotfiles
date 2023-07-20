@@ -24,4 +24,3 @@ fi
 
 # otherwise create a new sesssion with the name and directory we want, then switch to it
 tmux new-session -c $selected -d -s $dirname && tmux switch-client -t $dirname || tmux new -c $selected -A -s $dirname
-#

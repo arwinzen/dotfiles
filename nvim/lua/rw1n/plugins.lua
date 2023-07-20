@@ -100,7 +100,7 @@ use({
 use({
   'airblade/vim-rooter',
   setup = function()
-  -- Instead of running this every time we open a file, run it just once when vim starts. 
+  -- Instead of running this every time we open a file, run it just once when vim starts.
     vim.g.rooter_manual_only = 1
   end,
   config = function()
@@ -269,6 +269,33 @@ use({
   },
   config = function()
     require('rw1n/plugins/lspconfig')
+  end,
+})
+
+-- null-ls for linting, formatting and diagnostic information
+use({
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('rw1n.plugins.null-ls')
+    end,
+})
+
+-- mason null-ls to handle automatic installs of null-ls
+use({
+    'jay-babu/mason-null-ls.nvim',
+    requires = {
+      "williamboman/mason.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+    },
+    config = function()
+      require('rw1n.plugins.null-ls')
+    end,
+})
+
+use({
+  'L3MON4D3/LuaSnip',
+  config = function()
+    require('rw1n.plugins.luasnip')
   end,
 })
 

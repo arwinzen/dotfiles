@@ -24,34 +24,92 @@ require('packer').init({
 
 local use = require('packer').use
 
--- One Dark Theme
+-- use({
+--     'rose-pine/neovim',
+--     as = 'rose-pine',
+--     config = function()
+--       vim.cmd('colorscheme rose-pine')
+
+--       -- Hide the characters in FloatBorder
+--       vim.api.nvim_set_hl(0, 'FloatBorder', {
+--         fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+--         bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+--       })
+
+--       -- Make the StatusLineNonText background the same as StatusLine (hide tab lines)
+--       vim.api.nvim_set_hl(0, 'StatusLineNonText', {
+--         fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
+--         bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
+--       })
+
+--       -- Make the cursor line background invisible
+--       vim.api.nvim_set_hl(0, 'CursorLineBg', {
+--         fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+--         bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+--       })
+
+--       -- vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
+--       vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
+--     end,
+-- })
+
 use({
-  'jessarcher/onedark.nvim',
-  config = function()
-    vim.cmd('colorscheme onedark')
+    'folke/tokyonight.nvim',
+    as = 'tokyonight-night',
+    config = function()
+      vim.cmd('colorscheme tokyonight-night')
 
-    -- Hide the characters in FloatBorder
-    vim.api.nvim_set_hl(0, 'FloatBorder', {
-      fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-      bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-    })
+      -- Hide the characters in FloatBorder
+      vim.api.nvim_set_hl(0, 'FloatBorder', {
+        fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+        bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+      })
 
-    -- Make the StatusLineNonText background the same as StatusLine (hide tab lines)
-    vim.api.nvim_set_hl(0, 'StatusLineNonText', {
-      fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
-      bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
-    })
+      -- Make the StatusLineNonText background the same as StatusLine (hide tab lines)
+      vim.api.nvim_set_hl(0, 'StatusLineNonText', {
+        fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
+        bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
+      })
 
-    -- Make the cursor line background invisible
-    vim.api.nvim_set_hl(0, 'CursorLineBg', {
-      fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-      bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-    })
+      -- Make the cursor line background invisible
+      vim.api.nvim_set_hl(0, 'CursorLineBg', {
+        fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+        bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+      })
 
-    vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
-    vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
-  end,
+      vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
+      vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
+    end,
 })
+
+-- One Dark Theme
+-- use({
+--   'jessarcher/onedark.nvim',
+--   config = function()
+--     vim.cmd('colorscheme onedark')
+
+--     -- Hide the characters in FloatBorder
+--     vim.api.nvim_set_hl(0, 'FloatBorder', {
+--       fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+--       bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+--     })
+
+--     -- Make the StatusLineNonText background the same as StatusLine (hide tab lines)
+--     vim.api.nvim_set_hl(0, 'StatusLineNonText', {
+--       fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
+--       bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
+--     })
+
+--     -- Make the cursor line background invisible
+--     vim.api.nvim_set_hl(0, 'CursorLineBg', {
+--       fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+--       bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+--     })
+
+--     vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
+--     vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
+--   end,
+-- })
 
 use('wbthomason/packer.nvim')
 
@@ -292,11 +350,23 @@ use({
     end,
 })
 
+-- luasnip to provide snippet functionality
 use({
   'L3MON4D3/LuaSnip',
   config = function()
     require('rw1n.plugins.luasnip')
   end,
+})
+
+-- phpactor for refactoring
+use({
+    'phpactor/phpactor',
+    branch = 'master',
+    ft = 'php',
+    run = 'composer install --no-dev -o',
+    config = function()
+      require('rw1n.plugins.phpactor')
+    end,
 })
 
 -- Completion
@@ -316,6 +386,27 @@ use({
   config = function()
     require('rw1n.plugins.cmp')
   end,
+})
+
+-- use({
+--     'vim-test/vim-test',
+--     config = function()
+--       require('rw1n.plugins.vim-test')
+--     end,
+-- })
+
+use({
+    'theprimeagen/harpoon',
+    config = function()
+      require('rw1n.plugins.harpoon')
+    end,
+})
+
+use({
+    'mbbill/undotree',
+    config = function()
+      vim.keymap.set('n', '<Leader>u', vim.cmd.UndotreeToggle)
+    end,
 })
 
 -- Automatically set up your configuration after cloning packer.nvim

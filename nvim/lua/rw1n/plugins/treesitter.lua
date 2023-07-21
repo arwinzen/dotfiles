@@ -23,4 +23,8 @@ require('nvim-treesitter.configs').setup({
     context_commentstring = {
       enable = true,
     },
+    -- Needed because treesitter highlight turns off autoindent for php files
+    indent = {
+      enable = true,
+    }
 })

@@ -22,7 +22,7 @@ lspconfig.gopls.setup({
       gofumpt = true,
     },
   },
-  flags = { 
+  flags = {
     debounce_text_changes = 150,
   },
 })

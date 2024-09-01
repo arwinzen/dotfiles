@@ -11,6 +11,12 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- PHP
 lspconfig.intelephense.setup({ capabilities = capabilities })
 
+-- Bash
+lspconfig.bashls.setup({ capabilities = capabilities })
+
+-- SQL
+lspconfig.sqlls.setup({ capabilities = capabilities })
+
 -- Tailwind CSS
 lspconfig.tailwindcss.setup({ capabilities = capabilities })
 

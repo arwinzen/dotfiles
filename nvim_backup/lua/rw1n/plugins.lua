@@ -296,6 +296,8 @@ use({
 })
 
 -- Improved syntax highlighting
+-- Note: On new machines, there's an error when nvim is started
+-- The workaround is to comment out the code and stick with a single use statement
 use({
     'nvim-treesitter/nvim-treesitter',
     run = function()
@@ -358,16 +360,16 @@ use({
   end,
 })
 
--- phpactor for refactoring
-use({
-    'phpactor/phpactor',
-    branch = 'master',
-    ft = 'php',
-    run = 'composer install --no-dev -o',
-    config = function()
-      require('rw1n.plugins.phpactor')
-    end,
-})
+---- phpactor for refactoring
+--use({
+--    'phpactor/phpactor',
+--    branch = 'master',
+--    ft = 'php',
+--    run = 'composer install --no-dev -o',
+--    config = function()
+--      require('rw1n.plugins.phpactor')
+--    end,
+--})
 
 -- Completion
 use({

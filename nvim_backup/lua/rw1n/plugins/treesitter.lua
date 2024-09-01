@@ -5,6 +5,9 @@ require('nvim-treesitter.configs').setup({
       disable = { 'NvimTree' },
       -- uses nvim builtin syntax highlighting to help with spelling errors on variables
       -- additional_vim_regex_highlighting = true,
+      indent = {
+        enable = true,
+      }
     },
     textobjects = {
       select = {

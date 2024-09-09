@@ -1,0 +1,87 @@
+#--------------------------------------------------------------------------
+# Oh My Zsh
+#--------------------------------------------------------------------------
+
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+HYPHEN_INSENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="yyyy-mm-dd"
+VI_MODE_SET_CURSOR=true
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+
+plugins=(
+    git
+)
+
+source $ZSH/oh-my-zsh.sh
+
+#--------------------------------------------------------------------------
+# Configuration
+#--------------------------------------------------------------------------
+
+export GOPATH="$HOME/go"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+typeset -U path
+path=(
+    $HOME/.local/bin
+    $HOME/.nvm/versions/node/v16.19.1/bin
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
+    /usr/local/bin
+    /usr/bin
+    /bin
+    /usr/sbin
+    $HOME/.cargo/bin
+    $GOPATH/bin
+    $HOME/.yarn/bin
+    $path
+)
+
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format %d
+zstyle ':completion:*:descriptions' format %B%d%b
+zstyle ':completion:*:complete:(cd|pushd):*' tag-order \
+    'local-directories named-directories'
+
+#--------------------------------------------------------------------------
+# Aliases
+#--------------------------------------------------------------------------
+
+alias vim="nvim"
+alias copy="xclip -selection clipboard"
+alias paste="xclip -o -selection clipboard"
+# alias cat="bat"
+
+# Laravel
+alias a="artisan"
+alias tinker="artisan tinker"
+alias serve="artisan serve"
+alias mfs="artisan migrate:fresh --seed"
+
+# Git
+alias g="git"
+alias gs="git s"
+alias nah="git reset --hard;git clean -df"
+alias co="git checkout"
+alias main='git checkout $([ `git rev-parse --quiet --verify master` ] && echo "master" || echo "main")'
+
+# Docker
+alias d="docker"
+alias dc="docker compose"
+
+#--------------------------------------------------------------------------
+# Docker project config
+#--------------------------------------------------------------------------
+export HOST_UID=$(id -u)
+
+# shell integration for fzf
+source <(fzf --zsh)
+
+# zoxide for zsh
+eval "$(zoxide init zsh)"

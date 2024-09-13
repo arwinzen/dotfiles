@@ -10,6 +10,10 @@ ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
 rm -rf $HOME/.config/kitty
 ln -s $DOTFILES/kitty $HOME/.config/kitty
 
+# Starship
+rm -rf $HOME/.config/starship.toml
+ln -s $DOTFILES/starship.toml $HOME/.config/starship.toml
+
 # Wezterm
 rm -rf $HOME/.config/wezterm
 ln -s $DOTFILES/wezterm $HOME/.config/wezterm

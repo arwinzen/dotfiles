@@ -54,7 +54,7 @@ return {
       require('mason').setup()
 
       -- Enable the following language servers
-      local servers = { 'intelephense', 'rust_analyzer', 'pyright', 'tsserver', 'gopls', 'lua_ls' }
+      local servers = { 'intelephense', 'rust_analyzer', 'pyright', 'ts_ls', 'gopls', 'lua_ls' }
 
       -- Ensure the servers above are installed
       require('mason-lspconfig').setup {

@@ -59,6 +59,5 @@ vim.opt.undofile = true
 -- keep backups out of current directory
 -- vim.opt.backupdir:remove('.')
 
--- Disable the default behavior of Ctrl + y and Ctrl + e for scrolling in normal mode
-vim.api.nvim_set_keymap('n', '<C-y>', '<Nop>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-e>', '<Nop>', { noremap = true })
+-- concealer for obsidian.nvim
+vim.o.conceallevel=2

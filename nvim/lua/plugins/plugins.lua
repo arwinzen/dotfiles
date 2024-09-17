@@ -1,6 +1,4 @@
 return {
-    'folke/zen-mode.nvim',
-    'tpope/vim-surround',
     'tpope/vim-sleuth',
     'onsails/lspkind.nvim', -- vs code symbols for lsp
     'xiyaowong/transparent.nvim',
@@ -18,15 +16,5 @@ return {
           "nvim-telescope/telescope.nvim", -- optional
         },
         config = true
-    },
-
-    {
-        "folke/twilight.nvim",
-        ft = "markdown",
-        opts = {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-        }
     },
 }

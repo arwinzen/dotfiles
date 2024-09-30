@@ -12,6 +12,10 @@ return {
         name = "Notes",
         path = "~/Obsidian/Notes",
       },
+      {
+        name = "Xsolla",
+        path = "~/Obsidian/Xsolla"
+      }
     },
     mappings = {
       ["<leader>od"] = {

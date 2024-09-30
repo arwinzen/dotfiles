@@ -43,6 +43,7 @@ path=(
     $HOME/.cargo/bin
     $GOPATH/bin
     $HOME/.yarn/bin
+    /Applications/WezTerm.app/Contents/MacOS
     $path
 )
 
@@ -124,6 +125,20 @@ fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" } # select a file via fz
 # Docker project config
 #--------------------------------------------------------------------------
 export HOST_UID=$(id -u)
+
+
+#--------------------------------------------------------------------------
+# SSH agent
+#--------------------------------------------------------------------------
+# Ensure ssh agent is started
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)"
+fi
+
+# If inside a tmux session, ensure SSH agent forwarding
+if [ -n "$TMUX" ]; then
+    export SSH_AUTH_SOCK=$(tmux show-environment | grep SSH_AUTH_SOCK | cut -d= -f2)
+fi
 
 # zoxide for zsh
 eval "$(zoxide init zsh)"

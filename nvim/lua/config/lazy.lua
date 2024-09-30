@@ -30,3 +30,6 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
+-- Setup avante
+require('avante_lib').load()

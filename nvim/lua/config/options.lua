@@ -61,3 +61,6 @@ vim.opt.undofile = true
 
 -- concealer for obsidian.nvim
 vim.o.conceallevel=2
+
+-- avante: views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3

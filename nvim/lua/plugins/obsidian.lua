@@ -30,13 +30,13 @@ return {
       -- Optional, if you keep daily notes in a separate directory.
       folder = "0.Inbox/",
       -- Optional, if you want to change the date format for the ID of daily notes.
-      date_format = "DN-%y.%m.%d",
+      date_format = "%Y.%M.%D",
       -- Optional, if you want to change the date format of the default alias of daily notes.
       alias_format = "%B %-d, %Y",
       -- Optional, default tags to add to each new daily note created.
       default_tags = { "daily-notes" },
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-      template = "~/Obsidian/rw1n/Templates/DailyNoteTemplate.md"
+      template = "~/Obsidian/rw1n/templates/DailyNoteTemplate.md"
     },
     mappings = {
       ["<leader>od"] = {

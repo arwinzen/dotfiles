@@ -51,6 +51,12 @@ return {
           return require("obsidian").util.smart_action()
         end,
         opts = { buffer = true, expr = true },
+      },
+      ["<leader>zo"] = {
+        action = function()
+          vim.cmd("ObsidianQuickSwitch Home.md")
+        end,
+        opts = { noremap = true, silent = true},
       }
     },
     note_frontmatter_func = function(note)

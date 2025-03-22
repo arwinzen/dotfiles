@@ -8,14 +8,35 @@ return {
   },
   opts = {
     workspaces = {
+      -- {
+      --   name = "Notes",
+      --   path = "~/Obsidian/Notes",
+      -- },
       {
-        name = "Notes",
-        path = "~/Obsidian/Notes",
-      },
-      {
-        name = "Xsolla",
-        path = "~/Obsidian/Xsolla"
+        name = "rw1n",
+        path = "~/Obsidian/rw1n"
       }
+    },
+     -- Optional, for templates (see below).
+    templates = {
+      folder = "~/Obsidian/rw1n/Templates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M",
+      -- A map for custom variables, the key should be the variable and the value a function
+      substitutions = {},
+    },
+    -- daily notes
+     daily_notes = {
+      -- Optional, if you keep daily notes in a separate directory.
+      folder = "daily-notes/",
+      -- Optional, if you want to change the date format for the ID of daily notes.
+      date_format = "%Y.%m.%d",
+      -- Optional, if you want to change the date format of the default alias of daily notes.
+      alias_format = "%B %-d, %Y",
+      -- Optional, default tags to add to each new daily note created.
+      default_tags = { "daily-notes" },
+      -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+      template = "~/Obsidian/rw1n/templates/DailyNoteTemplate.md"
     },
     mappings = {
       ["<leader>od"] = {

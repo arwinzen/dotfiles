@@ -24,7 +24,7 @@
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship.toml
 
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/.local/opt/go"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -49,6 +49,7 @@ path=(
 
 # VI Mode
 bindkey jj vi-cmd-mode
+bindkey '^[^?' backward-kill-word  # Option+Delete to delete previous word
 
 setopt prompt_subst
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -83,7 +84,7 @@ bindkey '^[j' down-line-or-search
 alias vim="nvim"
 alias copy="xclip -selection clipboard"
 alias paste="xclip -o -selection clipboard"
-alias cat="bat"
+# alias cat="bat"
 alias cl='clear'
 
 # Directory navigation
@@ -142,3 +143,8 @@ fi
 
 # zoxide for zsh
 eval "$(zoxide init zsh)"
+
+export PATH="$PATH:/Users/a.goo/worldbanc/private/bin"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
